@@ -1,0 +1,159 @@
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <img class="edit1" src="{% static 'css/paper.png' %}" alt="">
+    <h2 class="edit">Edit Doctor</h2>
+    <form method="post" class="animated-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-animate">Save</button>
+    </form>
+    <a href="{% url 'list_doctors' %}" class="btn back btn-secondary upper">Back to Doctors</a>
+</div>
+<style>
+ header {
+    background:linear-gradient(to right, #008DDA, #41C9E2, #41C9E2, #41C9E2); /* Light green */
+    color: white;
+    padding: 15px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  body{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  nav {
+    text-align: center;
+    
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+  }
+  
+  nav a:hover {
+    background-color: #4ca2d3; /* Darker green */
+    border-radius: 30px;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  header nav {
+    display: flex; /* Arrange links horizontally */
+    justify-content: space-between; /* Distribute links evenly */
+    align-items: center; /* Vertically align links in center */
+  }
+  
+  header nav a {
+    padding: 10px 20px; /* Increase padding for better spacing */
+    font-weight: bold; /* Make links bolder for emphasis */
+  }
+  header nav a:hover {
+    background-color: #4ca2d3; /* Darker green on hover */
+    color: #fff; /* White text on hover */
+  }
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background:linear-gradient(45deg, #008DDA, #98A8F8, #ACE2E1, #F7EEDD);
+  }
+  
+  .container {
+    text-align: center;
+    margin-top: 13rem;
+  }
+  
+  h2 {
+    margin-bottom: 1rem;
+  }
+  .edit{
+    position: relative;
+    bottom: 100px;
+  }
+  .animated-form {
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    margin: 0 auto;
+    height: 550px;
+    padding: 20px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .edit1{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 210px;
+    left: 870px;
+  }
+  
+  .animated-form label {
+    display: block;
+    margin-bottom: 5px;
+    position: relative;
+    top: 150px;
+  }
+  
+  .animated-form input,
+  .animated-form select,
+  .animated-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+    top: 160px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn-primary {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    position: relative;
+    top: 180px;
+    left: 80px;
+    width: 400px;
+    height: 40px;
+    background: linear-gradient(to right, #008DDA, #41C9E2, #5AB2FF, #008DDA);
+  }
+  
+  .btn-primary:hover {
+    transition: ease-out 0.8s;
+    background: linear-gradient(to right, #008DDA,#5AB2FF, #41C9E2, #008DDA);/* Darker green on hover */
+  }
+  .back{
+    position: absolute;
+    top: 60px;
+    text-decoration: none;
+    left: 80px;
+    background: linear-gradient(45deg, #5d86ff, #5669fa);
+    color: white;
+  }
+  .back:hover{
+    transition: 2s;
+    background: linear-gradient(45deg, #5669fa #5d86ff);
+  }
+  
+  /* .upper{
+    top: -60px;
+    position: relative;
+  }
+   */
+  
+</style>
+{% endblock %}

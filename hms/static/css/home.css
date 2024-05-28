@@ -1,0 +1,22 @@
+body {
+    margin: 0; /* Remove default margin from body */
+    overflow: hidden; /* Hide scrollbars */
+  }
+  
+  .container {
+    height: 70vh; /* Set container height to 100% viewport height */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+  }
+  
+  .container__heading {
+    font-size: 2rem; /* Adjust heading size */
+    margin-bottom: 1rem; /* Add space between heading and paragraph */
+  }
+  
+  .container__text {
+    font-size: 1.2rem; /* Adjust paragraph size */
+  }
+  

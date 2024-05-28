@@ -1,0 +1,11 @@
+{% extends 'C:\Users\rahul_welhz6c\OneDrive\Desktop\joker pro\school\hms_v2\hms\templates\hms\base.html' %}
+
+{% block content %}
+<h2>Edit Patient</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'list_patients' %}">Back to Patients</a>
+{% endblock %}

@@ -1,0 +1,179 @@
+{% load static %}
+{% block content %}
+<header>
+     
+  <nav>
+      <a href="{% url 'home' %}">Home</a> |
+      <a href="{% url 'list_doctors' %}">Doctors</a> |
+      <a href="{% url 'list_patients' %}">Patients</a> |
+      <a href="{% url 'list_appointments' %}">Appointments</a>
+  </nav>
+</header>
+
+    <h1>Appointments</h1>
+    <a class="link" href="{% url 'add_appointment' %}"><img src="{% static  'css/add.png' %}" href class="plus" alt="">Add Appointment</a>
+    <ul class="ul">
+        {% for appointment in appointments %}
+            <li class="appointment-card">{{ appointment.patient.name }} with Dr. {{ appointment.doctor.name }} on {{ appointment.appointment_date }}</li>
+        {% endfor %}
+    </ul>
+    <style>
+        /* Basic styling */
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+  padding: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto; /* Center the list horizontally */
+  width: 70%; /* Adjust width as needed */
+}
+
+.appointment-item {  /* Class for styling appointments */
+  padding: 10px;
+  margin: 5px;
+  border-bottom: 1px solid #ccc; /* Add a subtle border */
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none; /* Remove underline */
+  padding: 10px;
+  display: inline-block; /* Allow links to sit side-by-side */
+}
+
+a:hover {
+  color: #333;
+}
+/* Basic styling */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  padding: 20px;
+  text-align: center;
+}
+
+.appointments {
+  display: flex;
+  flex-wrap: wrap;  /* Allow cards to wrap to next line if needed */
+  justify-content: space-around; /* Space cards evenly */
+  margin: 20px auto;
+  width: 80%; /* Adjust width as needed */
+}
+
+.appointment-card {
+    display: inline-block;
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 280px; /* Adjust width as needed */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
+  border: 1px solid black;
+  font-family: 'Times New Roman', Times, serif;
+}
+.appointment-card:hover{
+transition: 0.4s;
+transform: scale(1.4);
+} 
+/* Content within the card */
+.appointment-card h3,
+.appointment-card p {
+  margin: 5px 0;
+}
+a.link{
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 280px;
+    left: 300px;
+    background-color: #89CFF3;
+    border-radius: 2px;
+  }
+.ul{
+    position: absolute;
+    top: 400px;
+    left: 420px;
+   /* background:linear-gradient(#6C5F5B, #4F4A45) ; */
+  }
+a.link:hover{
+    transition: ease-out 0.5s;
+    transform: scale(1.5);
+    background-color: #80B3FF;
+}
+.plus{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0px;
+  left: -28px;
+  cursor: pointer;
+}
+header {
+    background:linear-gradient(to right, #008DDA, #41C9E2, #41C9E2, #41C9E2); /* Light green */
+    color: white;
+    padding: 15px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  nav {
+    text-align: center;
+  }
+  .name{
+    font-size: 18px;
+    position: relative;
+    left: 80px;
+    top: 60px;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+  }
+  
+  nav a:hover {
+    background-color: #4ca2d3; /* Darker green */
+    border-radius: 30px;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  header nav {
+    display: flex; /* Arrange links horizontally */
+    justify-content: space-between; /* Distribute links evenly */
+    align-items: center; /* Vertically align links in center */
+  }
+  
+  header nav a {
+    padding: 10px 20px; /* Increase padding for better spacing */
+    font-weight: bold; /* Make links bolder for emphasis */
+  }
+  header nav a:hover {
+    background-color: #4ca2d3; /* Darker green on hover */
+    color: #fff; /* White text on hover */
+  }
+
+    </style>
+    {% endblock %}

@@ -1,0 +1,210 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="../../static/css/doc.css">
+<h2 class="head2">Doctors</h2>
+<div class="home">
+    <header>
+     
+      <nav>
+          <a href="{% url 'home' %}">Home</a> |
+          <a href="{% url 'list_doctors' %}">Doctors</a> |
+          <a href="{% url 'list_patients' %}">Patients</a> |
+          <a href="{% url 'list_appointments' %}">Appointments</a>
+      </nav>
+  </header>
+  <form id="search-form" class="form2">
+    <input id="search-input" class="input" type="text" placeholder="Search doctors...">
+    <button type="button" id="search-button" class="btn btn3">Search</button>
+</form>
+
+<a class="link" href="{% url 'add_doctor' %}"><img src="{% static 'css/add.png' %}" class="plus" alt="">  Add Doctors </a>
+
+<ul id="doctor-list" class="ul">
+    {% for doctor in doctors %}
+        <li class="doctor-card name">
+            <span class="doctor-info">{{ doctor.name }} - {{ doctor.specialization }}</span>
+            <br>
+            <a class="lnk edit" href="{% url 'edit_doctor' doctor.pk %}">Edit</a>
+            <a class="lnk delete" href="{% url 'delete_doctor' doctor.pk %}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+<style>
+  body{
+   font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
+  
+     header {
+    background:linear-gradient(to right, #008DDA, #41C9E2, #41C9E2, #41C9E2); /* Light green */
+    color: white;
+    padding: 15px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  nav {
+    text-align: center;
+  }
+  .name{
+    font-size: 18px;
+    position: relative;
+    left: 80px;
+    top: 60px;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+  }
+  
+  nav a:hover {
+    background-color: #4ca2d3; /* Darker green */
+    border-radius: 30px;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  header nav {
+    display: flex; /* Arrange links horizontally */
+    justify-content: space-between; /* Distribute links evenly */
+    align-items: center; /* Vertically align links in center */
+  }
+  
+  header nav a {
+    padding: 10px 20px; /* Increase padding for better spacing */
+    font-weight: bold; /* Make links bolder for emphasis */
+  }
+  header nav a:hover {
+    background-color: #4ca2d3; /* Darker green on hover */
+    color: #fff; /* White text on hover */
+  }
+  .head2{
+    position: absolute;
+    top: 70px;
+    left: 900px;
+  }
+  .form2{
+    position: absolute;
+    top: 190px;
+    right: 800;
+  }
+  .input{
+    width: 320px;
+    height: 40px;
+    
+  }
+  .btn{
+    background:linear-gradient(to bottom, #6D5D6E,#40514E); 
+  }
+  .btn:hover{
+    background:linear-gradient(to bottom,#40514E,#6D5D6E); 
+  }
+  
+  a.link{
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 280px;
+    left: 300px;
+    background-color: #89CFF3;
+    border-radius: 2px;
+  }
+.ul{
+    position: absolute;
+    top: 300px;
+    left: 200px;
+   
+  }
+a.link:hover{
+    transition: ease-out 0.5s;
+    transform: scale(1.5);
+    background-color: #80B3FF;
+}
+.plus{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0px;
+  left: -28px;
+  cursor: pointer;
+}
+a.delete{
+  border:1px solid cadetblue;
+  border-color: cadetblue;
+  color: #000000;
+}
+a.edit{
+  border:1px solid cadetblue;
+  border-color: cadetblue;
+  color: #000000;
+}
+a.edit:hover{
+  transition:  ease 200ms;
+  background-color: #124be986;
+}
+a.delete:hover{
+  transition:  ease 200ms;
+  background-color: #cf2e43a6;
+}
+.btn3{
+background: linear-gradient(to bottom, #5BBCFF, #7EA1FF);
+}  
+.btn3:hover{
+  background: linear-gradient(to bottom, #7EA1FF, #5BBCFF);
+}
+.lnk{
+  position: relative;
+  top: 40px;
+  right: 30px;
+}
+.doctor-card{
+  background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+  text-align: center;
+
+}
+.doctor-card a{
+  position: relative;
+  left: -6px;
+  top: 59px;
+}
+.doctor-card:hover{
+  background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+}
+</style>
+<!-- Optional: app/static/js/script.js -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const searchButton = document.getElementById("search-button");
+      const searchInput = document.getElementById("search-input");
+      const doctorList = document.getElementById("doctor-list");
+      const doctorCards = doctorList.getElementsByClassName("doctor-card");
+  
+      searchInput.addEventListener("input", function() {
+          const query = searchInput.value.toLowerCase();
+          
+          for (let i = 0; i < doctorCards.length; i++) {
+              const doctorInfo = doctorCards[i].getElementsByClassName("doctor-info")[0].innerText.toLowerCase();
+              if (doctorInfo.includes(query)) {
+                  doctorCards[i].style.display = "";
+              } else {
+                  doctorCards[i].style.display = "none";
+              }
+          }
+      });
+  
+      searchInput.addEventListener("keyup", function(event) {
+          if (event.key === "Enter") {
+              searchButton.click();
+          }
+      });
+  });
+  </script>
+  

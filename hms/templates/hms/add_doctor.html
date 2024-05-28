@@ -1,0 +1,75 @@
+{% load static%}
+{% block content %}
+<div class="container">
+    <link rel="stylesheet" href="../../static/css/add_doc.css">
+    <h2>Add Doctor</h2>
+    
+    <form method="post" class="animated-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn b1 btn-primary btn-animate">Add</button>
+    </form>
+    <a href="{% url 'list_doctors' %}" class="btn back btn-secondary upper">Back to Doctors</a>
+    <img  class="img" src="{% static  'css/doctor.png' %}" alt="">
+</div>
+
+<style>
+  body{
+    background:linear-gradient(45deg, #5DA7DB, #98A8F8, #AAC4FF, #7FBCD2);
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .animated-form{
+    position: absolute;
+    top: 200px;
+    left: 660px;
+    width: 550px;
+    height: 500px;
+    border-color: #AAC4FF;
+    border:2px solid;
+  }
+  .animated-form input{
+    width: 200px;
+    height: 30px;
+    position: relative;
+    top:190px;
+  }
+  .animated-form label{
+    position: relative;
+    top:190px;
+  }
+  .btn{
+    position: relative;
+    top:190px;
+  }
+  .back{
+    position: absolute;
+    top: 40px;
+    text-decoration: none;
+    left: 80px;
+    background: linear-gradient(45deg, #5d86ff, #5669fa);
+  }
+  .back:hover{
+    transition: 2s;
+    background: linear-gradient(45deg, #5669fa #5d86ff);
+  }
+  .img{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 150px;
+    left: 840px;
+  }
+  .b1{
+    position: relative;
+    left: 75px;
+    margin-top: 20px;
+    width: 400px;
+    height: 40px;
+    background: linear-gradient(to right, #008DDA, #41C9E2, #5AB2FF, #008DDA);
+  }
+  .b1:hover{
+    transition: ease-out 0.8s;
+    background: linear-gradient(to right, #008DDA,#5AB2FF, #41C9E2, #008DDA);
+  }
+</style>
+{% endblock %}

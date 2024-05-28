@@ -1,0 +1,117 @@
+{% load static %}
+{% block content %}
+    <h1>Add Patient</h1>
+    <div class="holder">
+      <form method="post">
+        <img class="img" src="{% static 'css/hospital.png' %}" alt="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="b1" type="submit">Add</button>
+    </form>
+    </div>
+   
+    <a class="back" href="{% url 'list_patients' %}">Back to Patients</a>
+    <style>
+        /* Basic styling */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+}
+body{
+    background:linear-gradient(45deg, #5DA7DB, #98A8F8, #AAC4FF, #7FBCD2);
+  }
+  .b1{
+    position: relative;
+    left: 5px;
+    margin-top: 20px;
+    width: 200px;
+    height: 40px;
+    background: linear-gradient(to right, #008DDA, #41C9E2, #5AB2FF, #008DDA);
+  }
+  .b1:hover{
+    transition: ease-out 0.8s;
+    background: linear-gradient(to right, #008DDA,#5AB2FF, #41C9E2, #008DDA);
+  }
+  .back{
+    position: absolute;
+    top: 40px;
+    text-decoration: none;
+    left: 80px;
+    color: #333;
+    background: linear-gradient(45deg, #5d86ff, #5669fa);
+  }
+  .back:hover{
+    transition: 2s;
+    background: linear-gradient(45deg, #5669fa #5d86ff);
+  }
+
+.img{
+  width: 160px;
+  height: 160px;
+  position:absolute;
+  top: -180px;
+}
+h1 {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  top: 70px;
+}
+.holder{
+  border: 2px solid white;
+  width: 400px;
+  height: 600px;
+  position: absolute;
+  left: 750px;
+  top: 190px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  top: 200px;
+}
+
+/* Form elements */
+label {
+  margin-bottom: 5px;
+  display: block; /* Display labels on separate lines */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none; /* Remove underline */
+  padding: 10px;
+}
+
+a:hover {
+  color: #333;
+}
+
+    </style>
+    {% endblock %}
